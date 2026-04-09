@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mensaje interactivo de cumpleaños en paleta de rosas pasteles, utilizando técnicas de HTML5 puro."
+    />
+    <title>¡Sorpresa de Cumpleaños!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="escenario-centrado">
+      <section class="tarjeta-principal">
+        <header class="encabezado-instrucciones">
+          <h1>Tengo algo especial para vos</h1>
+          <p>
+            Escribe la clave secreta (pista: intenta con
+            "<strong>sorpresa</strong>" todo en minúsculas) para descubrir tu
+            mensaje escondido.
+          </p>
+        </header>
+
+        <div class="interaccion-oculta">
+          <!-- Pattern validación: solo acepta 'sorpresa' -->
+          <input
+            type="text"
+            id="codigoSecreto"
+            class="campo-clave"
+            required
+            pattern="sorpresa"
+            placeholder="Escribe tu código mágico aquí..."
+            aria-label="Introducción de clave para ver carta sorpresa"
+          />
+
+          <span class="etiqueta-validacion">Bloqueado 🔐</span>
+          <article class="mensaje-carta">
+            <div class="cinta-adhesiva"></div>
+
+            <div class="letra-manuscrita">
+              <h2>¡Muy Feliz Cumpleaños! 🎉</h2>
+
+              <p>
+                No podía pasar esta fecha por alto. Sabía que lograrías
+                descifrar el mensaje... Quería escribirte esta notita especial
+                escondida tras la "nube cibernética", sin utilizar una gota de
+                JavaScript complicado.
+              </p>
+
+              <p>
+                Que se vengan nuevos meses cargados de muchísima luz, salud e
+                infinitas risas (así de rosas como este tema que preparé con
+                especial aprecio para vos).
+              </p>
+
+              <!-- Componente de fotos -->
+              <div class="fotos-polaroid">
+                <figure class="polaroid">
+                  <img
+                    src="../assets/imagen-carta.jpg"
+                    alt="Soplando unas velas."
+                  />
+                  <figcaption>
+                    Uno de mis instantes preferidos de The Office.
+                  </figcaption>
+                </figure>
+              </div>
+
+              <p>
+                Cierra los ojos un par de minutos, enfócate en tu mayor meta
+                ahora, ábrelos de nuevo e ingresa todo el entusiasmo hoy a
+                celebrar de manera inolvidable. Que nunca pares de inspirar y
+                enseñarle tus saberes de frontend y código en todas sus variadas
+                capas al planeta.
+              </p>
+
+              <p class="despedida">Sinceramente, Luca💖</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

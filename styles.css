@@ -1,0 +1,255 @@
+/* ========================================================
+   VARIABLES CSS - PALETA ROSA PASTEL
+   ======================================================== */
+:root {
+  --bg: #ffe5ec; /* Rosa pastel, el fondo general */
+  --card: #ffffff; /* Blanco puro, la "tarjeta/sobre" base central */
+  --card-interior: #fff0f3; /* Rosa un poco más apagado simulando el papel de la carta interior */
+  --accent: #fb6f92; /* Un rosa vibrante intenso de decoración e input */
+  --text: #59313a; /* Marrón rojizo muy oscuro, provee máximo contraste para lectura sin ser negro sólido */
+  --text-light: #7b4c59; /* Una variación del marrón oscuro para restarle fuerza jerárquica a la descripción principal */
+
+  --borde-radio: 15px;
+
+  --fuente-texto: "Quicksand", sans-serif;
+  --fuente-carta: "Caveat", cursive;
+}
+
+/* ========================================================
+   RESET GLOBAL Y ACCESIBILIDAD MÍNIMA
+   ======================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Aprovechamos el 'body' y toda su ventana, haciéndolo de paso un contenedor Flex para 
+   centrar directamente y sin esfuerzos lo que ubiquemos de primer nivel ('main') 
+*/
+body {
+  background-color: var(--bg);
+  color: var(--text-light);
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--accent);
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* ========================================================
+   TARJETA PRINCIPAL
+   ======================================================== */
+
+.escenario-centrado {
+  width: 100%;
+  max-width: 600px;
+}
+
+.tarjeta-principal {
+  background-color: var(--card);
+  padding: 30px 15px;
+  border-radius: var(--borde-radio);
+  box-shadow: 0 10px 30px rgba(251, 111, 146, 0.15);
+  text-align: center;
+}
+
+.encabezado-instrucciones {
+  margin-bottom: 30px;
+}
+
+/* ========================================================
+   COMPONENTES INTERACTIVOS HTML5 + CSS
+   ======================================================== */
+
+.interaccion-oculta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* El control base visual */
+.campo-clave {
+  font-family: var(--fuente-texto);
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 2px solid #ffccd5;
+  outline: none;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.campo-clave:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(251, 111, 146, 0.3);
+}
+
+/* -- VALIDACIÓN :VALID -- 
+   Detecta automáticamente si la expresión ("pattern" exp) escrita exacta
+   coincidió a base estricta dictada al <input...>.
+   (En nuestro HTML le indicamos: palabra -> sorpresa).*/
+
+.campo-clave:valid {
+  border-color: #6a994e;
+  background-color: #f1f9ec;
+  color: #386641;
+}
+
+/* Modificar etiqueta de validación cuando el input es válido */
+.campo-clave:valid + .etiqueta-validacion {
+  font-size: 0;
+  margin-bottom: 20px;
+}
+
+.campo-clave:valid + .etiqueta-validacion::after {
+  content: "¡Desbloqueado! 🔓 Abriendo tu carta";
+  font-size: 15px;
+  font-weight: 600;
+  color: #6a994e;
+  animation: fadeMioSuave 1s ease forwards;
+}
+
+/* ========================================================
+   MOSTRAR CARTA AL VALIDAR
+   ======================================================== */
+.mensaje-carta {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transform: translateY(-20px);
+  transition:
+    max-height 1.5s ease-out,
+    opacity 0.8s ease 0.3s,
+    transform 0.8s ease 0.3s,
+    margin-top 0.4s ease;
+  background-color: var(--card-interior);
+  width: 100%;
+  padding: 30px 15px;
+  border-radius: var(--borde-radio);
+  border: 1px dashed #f2b7c6;
+  text-align: left;
+  position: relative;
+}
+
+/* Mostrar carta cuando validación es correcta */
+.campo-clave:valid ~ .mensaje-carta {
+  max-height: 1500px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  margin-top: 15px;
+}
+
+/* ========================================================
+   DISEÑO INTERIOR - ESTILOS DE CARTA
+   ======================================================== */
+
+.cinta-adhesiva {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 100px;
+  height: 35px;
+  background-color: rgba(251, 111, 146, 0.4);
+  border-radius: 2px;
+}
+
+.letra-manuscrita {
+  font-family: var(--fuente-carta);
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.letra-manuscrita h2 {
+  color: var(--text);
+  font-family: var(--fuente-texto);
+  font-size: 22px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.despedida {
+  margin-top: 40px;
+  text-align: right;
+  font-weight: 700;
+}
+
+/* ========================================================
+   FOTO ESTILO POLAROID
+   ======================================================== */
+.fotos-polaroid {
+  display: flex;
+  justify-content: center;
+  margin: 35px 0;
+}
+
+.polaroid {
+  background-color: var(--card);
+  padding: 12px 12px 35px 12px;
+  box-shadow: 2px 4px 12px rgba(89, 49, 58, 0.15);
+  transform: rotate(2deg);
+  width: 100%;
+  max-width: 280px;
+  border: 1px solid #fee1e8;
+}
+
+.polaroid img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  filter: sepia(30%) hue-rotate(-20deg) brightness(1.05);
+}
+
+figcaption {
+  text-align: center;
+  font-family: var(--fuente-carta);
+  font-size: 19px;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+/* ========================================================
+   ANIMACIONES
+   ======================================================== */
+@keyframes fadeMioSuave {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 600px) {
+  .letra-manuscrita {
+    font-size: 26px;
+  }
+  .tarjeta-principal {
+    padding: 60px 50px;
+  }
+  .mensaje-carta {
+    padding: 50px;
+  }
+}
